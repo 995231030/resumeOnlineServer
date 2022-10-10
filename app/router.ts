@@ -5,4 +5,5 @@ export default (app: Application) => {
 
   router.get('/', controller.home.index);
   router.post('/', controller.home.index);
+  router.post('/mysqlTest', controller.home.mysqlTest);
 };
