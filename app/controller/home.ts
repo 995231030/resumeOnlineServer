@@ -16,8 +16,6 @@ export default class HomeController extends Controller {
       let reqParam = ctx.request.body
       if (reqParam.topic == undefined || !(ctx.service.mysqlService[reqParam.topic] instanceof Function)) {
         errCallback(reqParam.topic + ERRLIST.ERR_TOPIC)
-        ctx.body.msg =
-          ctx.body.ready = `0`
         return
       }
       ctx.body = await eval(`ctx.service.mysqlService.${reqParam.topic}(ctx.request.body)`)
@@ -25,9 +23,10 @@ export default class HomeController extends Controller {
         errCallback(ERRLIST.ERR_NULL)
       }
       function errCallback(msg) {
-        ctx.body = {}
-        ctx.body.msg = msg
-        ctx.body.ready = `0`
+        ctx.body = {
+          msg: msg,
+          ready: `0`
+        }
       }
       // let res = await this.app.mysql.query('select * from `userlist`');
     } catch (err) {
