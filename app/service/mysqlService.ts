@@ -7,13 +7,15 @@ import { Service } from 'egg';
  */
 export default class Test extends Service {
     // 注册
-    public async userReg() {
+    public async userReg(req: object) {
+        console.log(req)
         return {
             getVerificationCode: getVerificationCode()
         }
     }
     // 登录
-    public async userLogin() {
+    public async userLogin(req: object) {
+        console.log(req)
         return {};
     }
 }
