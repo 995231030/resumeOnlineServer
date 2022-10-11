@@ -1,7 +1,7 @@
 import { Controller } from 'egg';
 const ERRLIST = {
-  ERR_NULL: "服务器给您返回了一个空数据,请检查参数或检查后端程序",
-  ERR_TOPIC: ` topic:不存在`
+  ERR_NULL: "The server returned an empty data to you. If this is not what the front-end expected, please check the parameters or back-end programs",
+  ERR_TOPIC: `:non-existent topic`
 }
 
 export default class HomeController extends Controller {
@@ -19,16 +19,18 @@ export default class HomeController extends Controller {
         return
       }
       ctx.body = await eval(`ctx.service.mysqlService.${reqParam.topic}(ctx.request.body)`)
+      if (ctx.body.ready == undefined) {
+        ctx.body.ready = 1
+      }
       if (ctx.body == "" || null || {}) {
         errCallback(ERRLIST.ERR_NULL)
       }
       function errCallback(msg) {
         ctx.body = {
           msg: msg,
-          ready: `0`
+          ready: 0
         }
       }
-      // let res = await this.app.mysql.query('select * from `userlist`');
     } catch (err) {
       console.log(err)
     }
