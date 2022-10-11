@@ -22,10 +22,10 @@ export default class HomeController extends Controller {
       if (ctx.body.ready == undefined) {
         ctx.body.ready = 1
       }
-      if (ctx.body == "" || null || {}) {
+      if (ctx.body == "" || ctx.body == null || Object.keys(ctx.body).length - 1 == 0) {
         errCallback(ERRLIST.ERR_NULL)
       }
-      function errCallback(msg) {
+      function errCallback(msg: string) {
         ctx.body = {
           msg: msg,
           ready: 0

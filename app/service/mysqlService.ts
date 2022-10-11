@@ -8,10 +8,15 @@ import { Service } from 'egg';
 export default class Test extends Service {
     // 注册
     public async userReg() {
-        return "";
+        return {
+            getVerificationCode: getVerificationCode()
+        }
     }
     // 登录
     public async userLogin() {
         return {};
     }
+}
+function getVerificationCode() {
+    return Math.random().toFixed(6).slice(-6)
 }
