@@ -14,11 +14,11 @@ export default class HomeController extends Controller {
     const { ctx } = this;
     try {
       let reqParam = ctx.request.body
-      if (reqParam.topic == undefined || !(ctx.service.mysqlService[reqParam.topic] instanceof Function)) {
+      if (reqParam.topic == undefined || !(ctx.service.mainService[reqParam.topic] instanceof Function)) {
         errCallback(reqParam.topic + ERRLIST.ERR_TOPIC)
         return
       }
-      ctx.body = await eval(`ctx.service.mysqlService.${reqParam.topic}(ctx.request.body)`)
+      ctx.body = await eval(`ctx.service.mainService.${reqParam.topic}(ctx.request.body)`)
       if (ctx.body.ready == undefined) {
         ctx.body.ready = 1
       }
