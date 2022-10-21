@@ -18,7 +18,7 @@ export default class mainService extends Service {
         let res: any = await this.service.mysqlApi.query("userList", "userEmail", req.data.account)
         // let res: any = await this.app.mysql.query(`select * from userlist where userEmail = '${req.data.account}'`)
         if (res.length == 0) {
-            res = "未注册,可以立即注册"
+            res = "未注册"
         }
         console.log(res)
         return { res };
