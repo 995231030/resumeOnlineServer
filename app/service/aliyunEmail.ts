@@ -28,7 +28,7 @@ BsWxbX9P9kO7iJuZTXazSF1Qa7Tkj8
         config.endpoint = `dm.aliyuncs.com`;
         return new Dm20151123(config);
     }
-
+    // 咋他吗回事啊
     // static async main(account: string, verificationCod: number, args: string[]): Promise<void> {
     static async main(account: string, verificationCod: number): Promise<void> {
         let client = Client.createClient("LTAI5tEPtbPZ4M8BaEGhP7Wa", "xvFtfV78JyvvCVhVKgx4nnWsBYqCLv");
