@@ -10,7 +10,6 @@ export default class mainService extends Service {
     public async userReg(req: object | any) {
         console.log(req)
         let account = req.data.account
-        // let aliyunEmail = Client.createClient("LTAI5tBXGU8AKYJfBWnBmBn1", "BsWxbX9P9kO7iJuZTXazSF1Qa7Tkj8")
         if (account == "") {
             return
         }

@@ -11,7 +11,7 @@ logs/
 *.lock
 *.js
 !.autod.conf.js
-
+app/service/mainService.ts
 app/**/*.js
 test/**/*.js
 config/**/*.js
