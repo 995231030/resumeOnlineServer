@@ -1,5 +1,5 @@
 import { Service } from 'egg';
-
+// import Client from './aliyunEmail';
 /**
  * mysql Service
  * mysql operations
@@ -7,8 +7,18 @@ import { Service } from 'egg';
  */
 export default class mainService extends Service {
     // 注册
-    public async userReg(req: object) {
+    public async userReg(req: object | any) {
         console.log(req)
+        let account = req.data.account
+        // let aliyunEmail = Client.createClient("LTAI5tBXGU8AKYJfBWnBmBn1", "BsWxbX9P9kO7iJuZTXazSF1Qa7Tkj8")
+        if (account == "") {
+            return
+        }
+        // TODO 2022-10-24 13:58  朱永博
+        // Client.main(account, getVerificationCode());
+        // Client.main()
+        // aliyunEmail.descDomain
+        // console.log(aliyunEmail)
         return {
             getVerificationCode: getVerificationCode()
         }
@@ -25,5 +35,5 @@ export default class mainService extends Service {
     }
 }
 function getVerificationCode() {
-    return Math.random().toFixed(6).slice(-6)
+    return parseInt(Math.random().toFixed(6).slice(-6))
 }

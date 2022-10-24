@@ -6,14 +6,16 @@ type AnyClass = new (...args: any[]) => any;
 type AnyFunc<T = any> = (...args: any[]) => T;
 type CanExportFunc = AnyFunc<Promise<any>> | AnyFunc<IterableIterator<any>>;
 type AutoInstanceType<T, U = T extends CanExportFunc ? T : T extends AnyFunc ? ReturnType<T> : T> = U extends AnyClass ? InstanceType<U> : U;
-import ExportMysqlApi from '../../../app/service/mysqlApi';
+import ExportAliyunEmail from '../../../app/service/aliyunEmail';
 import ExportMainService from '../../../app/service/mainService';
+import ExportMysqlApi from '../../../app/service/mysqlApi';
 import ExportTest from '../../../app/service/Test';
 
 declare module 'egg' {
   interface IService {
-    mysqlApi: AutoInstanceType<typeof ExportMysqlApi>;
+    aliyunEmail: AutoInstanceType<typeof ExportAliyunEmail>;
     mainService: AutoInstanceType<typeof ExportMainService>;
+    mysqlApi: AutoInstanceType<typeof ExportMysqlApi>;
     test: AutoInstanceType<typeof ExportTest>;
   }
 }
