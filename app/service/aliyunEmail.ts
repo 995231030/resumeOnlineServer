@@ -31,7 +31,7 @@ BsWxbX9P9kO7iJuZTXazSF1Qa7Tkj8
 
     // static async main(account: string, verificationCod: number, args: string[]): Promise<void> {
     static async main(account: string, verificationCod: number): Promise<void> {
-        let client = Client.createClient("LTAI5tBXGU8AKYJfBWnBmBn1", "BsWxbX9P9kO7iJuZTXazSF1Qa7Tkj8");
+        let client = Client.createClient("LTAI5tEPtbPZ4M8BaEGhP7Wa", "xvFtfV78JyvvCVhVKgx4nnWsBYqCLv");
         let singleSendMailRequest = new $Dm20151123.SingleSendMailRequest({
             // textBody: "11111111111",
             htmlBody: `验证码${verificationCod}`,
