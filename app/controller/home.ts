@@ -18,7 +18,8 @@ export default class HomeController extends Controller {
         errCallback(reqParam.topic + ERRLIST.ERR_TOPIC)
         return
       }
-      ctx.body = await eval(`ctx.service.mainService.${reqParam.topic}(ctx.request.body)`)
+      ctx.body = await ctx.service.mainService[reqParam.topic](ctx.request.body)
+      // ctx.body = await eval(`ctx.service.mainService.${reqParam.topic}(ctx.request.body)`)
       if (ctx.body.ready == undefined) {
         ctx.body.ready = 1
       }
@@ -32,7 +33,8 @@ export default class HomeController extends Controller {
         }
       }
     } catch (err) {
-      console.log(err)
+      return
+      // console.log(err)
     }
   }
 }

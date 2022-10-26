@@ -11,7 +11,7 @@ export default class mainService extends Service {
         console.log(req)
         let account = req.data.account
         if (account == "") {
-            return
+            return "error:account is null"
         }
         // TODO 2022-10-24 13:58  朱永博
         // Client.main(account, getVerificationCode());
